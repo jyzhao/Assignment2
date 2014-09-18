@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UserInterface;
+package View;
 
-import Business.VitalSign;
-import Business.VitalSignHistory;
+import Model.VitalSign;
+import Model.VitalSignHistory;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -37,11 +37,12 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
         }
         
         for (VitalSign vitalSign : vitalSignHistory.getVitalSignList()) {
-            Object row[] = new Object[4];
+            Object row[] = new Object[5];
             row[0] = vitalSign;
-            row[1] = vitalSign.getTemperature();
-            row[2] = vitalSign.getBloodPressure();
-            row[3] = vitalSign.getPulse();
+            row[1] = vitalSign.getRespiratoryRate();
+            row[2] = vitalSign.getHeartRate();
+            row[3] = vitalSign.getSystolicBloodPressure();
+            row[4] = vitalSign.getWeight();
             
             dtm.addRow(row);
         }
@@ -58,10 +59,10 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         vitalSignJTable = new javax.swing.JTable();
-        bloodPressureJTextField = new javax.swing.JTextField();
-        pulseJTextField = new javax.swing.JTextField();
-        dateJTextField = new javax.swing.JTextField();
-        temperatureJTextField = new javax.swing.JTextField();
+        heartRateJTextField = new javax.swing.JTextField();
+        systolicBloodPressureJTextField = new javax.swing.JTextField();
+        weightJTextField = new javax.swing.JTextField();
+        respiratoryRateJTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -69,20 +70,22 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         viewVitalSignJButton = new javax.swing.JButton();
         deleteVitalSignJButton = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        timeAndDateJTextField = new javax.swing.JTextField();
 
         vitalSignJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Date", "Temperature", "Blood Pressure", "Pulse"
+                "Time & Date", "Respiratory Rate", "Heart Rate", "Systolic Blood Pressure", "Weight (lbs)"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Float.class, java.lang.Float.class, java.lang.Integer.class
+                java.lang.Object.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -99,17 +102,18 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
             vitalSignJTable.getColumnModel().getColumn(1).setResizable(false);
             vitalSignJTable.getColumnModel().getColumn(2).setResizable(false);
             vitalSignJTable.getColumnModel().getColumn(3).setResizable(false);
+            vitalSignJTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
         jLabel1.setText("Create Vital Sign");
 
-        jLabel2.setText("Temperature");
+        jLabel2.setText("Respiratory Rate");
 
-        jLabel3.setText("Blood Pressure");
+        jLabel3.setText("Heart Rate");
 
-        jLabel4.setText("Pulse");
+        jLabel4.setText("Systolic Blood Pressure");
 
-        jLabel5.setText("Date");
+        jLabel5.setText("Weight (lbs)");
 
         viewVitalSignJButton.setText("View");
         viewVitalSignJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -125,36 +129,39 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel6.setText("Time and Date");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(85, 85, 85)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
+                        .addGap(162, 162, 162)
                         .addComponent(viewVitalSignJButton)
                         .addGap(108, 108, 108)
                         .addComponent(deleteVitalSignJButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
+                        .addGap(230, 230, 230)
                         .addComponent(jLabel1))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
+                        .addGap(172, 172, 172)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel5))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
                         .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bloodPressureJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pulseJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dateJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(temperatureJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(365, Short.MAX_VALUE))
+                            .addComponent(heartRateJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(systolicBloodPressureJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(weightJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(respiratoryRateJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(timeAndDateJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 674, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(230, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,25 +175,26 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
                     .addComponent(viewVitalSignJButton)
                     .addComponent(deleteVitalSignJButton))
                 .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(temperatureJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(bloodPressureJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(pulseJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel5))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(dateJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(21, 21, 21))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(respiratoryRateJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(heartRateJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(systolicBloodPressureJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(weightJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(timeAndDateJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -196,10 +204,11 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
         if (selectedRow >= 0) {
             VitalSign vitalSign = (VitalSign) vitalSignJTable.getValueAt(selectedRow, 0);
 
-            temperatureJTextField.setText(String.valueOf(vitalSign.getTemperature()));
-            bloodPressureJTextField.setText(String.valueOf(vitalSign.getBloodPressure()));
-            pulseJTextField.setText(String.valueOf(vitalSign.getPulse()));
-            dateJTextField.setText(String.valueOf(vitalSign.getDate()));
+            respiratoryRateJTextField.setText(String.valueOf(vitalSign.getRespiratoryRate()));
+            heartRateJTextField.setText(String.valueOf(vitalSign.getRespiratoryRate()));
+            systolicBloodPressureJTextField.setText(String.valueOf(vitalSign.getSystolicBloodPressure()));
+            weightJTextField.setText(String.valueOf(vitalSign.getWeight()));
+            timeAndDateJTextField.setText(String.valueOf(vitalSign.getTimeAndDate()));
         } else {
             JOptionPane.showMessageDialog(null, "Please selecte vital sign !!!");
         }
@@ -221,18 +230,20 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField bloodPressureJTextField;
-    private javax.swing.JTextField dateJTextField;
     private javax.swing.JButton deleteVitalSignJButton;
+    private javax.swing.JTextField heartRateJTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField pulseJTextField;
-    private javax.swing.JTextField temperatureJTextField;
+    private javax.swing.JTextField respiratoryRateJTextField;
+    private javax.swing.JTextField systolicBloodPressureJTextField;
+    private javax.swing.JTextField timeAndDateJTextField;
     private javax.swing.JButton viewVitalSignJButton;
     private javax.swing.JTable vitalSignJTable;
+    private javax.swing.JTextField weightJTextField;
     // End of variables declaration//GEN-END:variables
 }
