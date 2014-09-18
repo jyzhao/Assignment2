@@ -39,11 +39,22 @@
                       </Group>
                       <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="respiratoryRateJTextField" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
                           <Component id="heartRateJTextField" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
                           <Component id="systolicBloodPressureJTextField" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
                           <Component id="weightJTextField" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
-                          <Component id="respiratoryRateJTextField" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
-                          <Component id="timeAndDateJTextField" min="-2" pref="147" max="-2" attributes="0"/>
+                          <Component id="timeAndDateJTextField" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="2" attributes="0">
+                          <Component id="respiratoryRateJLabel" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="heartRateJLabel" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="systolicBloodPressureJLabel" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="weightJLabel" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="isRespiratoryRateNormalJLabel" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="isHeartRateNormalJLabel" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="isWeightNormalJLabel" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="isSystolicBloodPressureNormalJLabel" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jScrollPane1" alignment="0" min="-2" pref="674" max="-2" attributes="0"/>
@@ -68,21 +79,29 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="respiratoryRateJTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="respiratoryRateJLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="isRespiratoryRateNormalJLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="heartRateJTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="heartRateJLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="isHeartRateNormalJLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="systolicBloodPressureJTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="systolicBloodPressureJLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="isSystolicBloodPressureNormalJLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="22" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="weightJTextField" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="weightJLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="isWeightNormalJLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -204,6 +223,22 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="timeAndDateJTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="respiratoryRateJLabel">
+    </Component>
+    <Component class="javax.swing.JLabel" name="heartRateJLabel">
+    </Component>
+    <Component class="javax.swing.JLabel" name="systolicBloodPressureJLabel">
+    </Component>
+    <Component class="javax.swing.JLabel" name="weightJLabel">
+    </Component>
+    <Component class="javax.swing.JLabel" name="isRespiratoryRateNormalJLabel">
+    </Component>
+    <Component class="javax.swing.JLabel" name="isHeartRateNormalJLabel">
+    </Component>
+    <Component class="javax.swing.JLabel" name="isWeightNormalJLabel">
+    </Component>
+    <Component class="javax.swing.JLabel" name="isSystolicBloodPressureNormalJLabel">
     </Component>
   </SubComponents>
 </Form>

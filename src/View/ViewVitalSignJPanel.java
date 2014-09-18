@@ -20,7 +20,13 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
      * Creates new form ViewVitalSignJPanel
      */
     private VitalSignHistory vitalSignHistory;
-
+    private Boolean isRespiratoryRateNormal = false;
+    private Boolean isHeartRateNormal = false;
+    private Boolean isSystolicBloodPressureNormal = false;
+    private Boolean isWeightNormal = false;
+    
+    
+    
     public ViewVitalSignJPanel(VitalSignHistory vitalSignHistory) {
         initComponents();
         this.vitalSignHistory = vitalSignHistory;
@@ -72,6 +78,14 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
         deleteVitalSignJButton = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         timeAndDateJTextField = new javax.swing.JTextField();
+        respiratoryRateJLabel = new javax.swing.JLabel();
+        heartRateJLabel = new javax.swing.JLabel();
+        systolicBloodPressureJLabel = new javax.swing.JLabel();
+        weightJLabel = new javax.swing.JLabel();
+        isRespiratoryRateNormalJLabel = new javax.swing.JLabel();
+        isHeartRateNormalJLabel = new javax.swing.JLabel();
+        isWeightNormalJLabel = new javax.swing.JLabel();
+        isSystolicBloodPressureNormalJLabel = new javax.swing.JLabel();
 
         vitalSignJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -155,11 +169,21 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel6))
                         .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(respiratoryRateJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(heartRateJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(systolicBloodPressureJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(weightJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(respiratoryRateJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(timeAndDateJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(timeAndDateJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(57, 57, 57)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(respiratoryRateJLabel)
+                            .addComponent(heartRateJLabel)
+                            .addComponent(systolicBloodPressureJLabel)
+                            .addComponent(weightJLabel)
+                            .addComponent(isRespiratoryRateNormalJLabel)
+                            .addComponent(isHeartRateNormalJLabel)
+                            .addComponent(isWeightNormalJLabel)
+                            .addComponent(isSystolicBloodPressureNormalJLabel)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 674, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(230, Short.MAX_VALUE))
         );
@@ -177,19 +201,27 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(respiratoryRateJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(respiratoryRateJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(respiratoryRateJLabel)
+                    .addComponent(isRespiratoryRateNormalJLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(heartRateJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(heartRateJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(heartRateJLabel)
+                    .addComponent(isHeartRateNormalJLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(systolicBloodPressureJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(systolicBloodPressureJLabel)
+                    .addComponent(isSystolicBloodPressureNormalJLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(weightJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel5)
+                    .addComponent(weightJLabel)
+                    .addComponent(isWeightNormalJLabel))
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -210,13 +242,72 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
             weightJTextField.setText(String.valueOf(vitalSign.getWeight()));
             timeAndDateJTextField.setText(String.valueOf(vitalSign.getTimeAndDate()));
 
+            checkNormal(vitalSign);/////////////////////////////////////////////////////////////////////////////////////////
+            
+            if (isRespiratoryRateNormal) {
+                isRespiratoryRateNormalJLabel.setText("Normal");
+            } else {
+                isRespiratoryRateNormalJLabel.setText("Abnormal");
+            }
+            
+            if (isHeartRateNormal) {
+                isHeartRateNormalJLabel.setText("Normal");
+            } else {
+                isHeartRateNormalJLabel.setText("Abnormal");
+            }
+            
+            if (isSystolicBloodPressureNormal) {
+                isSystolicBloodPressureNormalJLabel.setText("Normal");
+            } else {
+                isSystolicBloodPressureNormalJLabel.setText("Abnormal");
+            }
+            
+            if (isWeightNormal) {
+                isWeightNormalJLabel.setText("Normal");
+            } else {
+                isWeightNormalJLabel.setText("Abnormal");
+            }
+           
+            
         } else {
             JOptionPane.showMessageDialog(null, "Please select vital sign !!!");
         }
-        
-
+     
     }//GEN-LAST:event_viewVitalSignJButtonActionPerformed
 
+    private void checkNormal(VitalSign vitalSign) {
+        
+        //toddler
+        if (vitalSignHistory.getAge() >= 1 && vitalSignHistory.getAge() <= 3) {
+            isRespiratoryRateNormal = vitalSign.getRespiratoryRate() >= 20 && vitalSign.getRespiratoryRate() <= 30;
+            isHeartRateNormal = vitalSign.getHeartRate() >= 80 && vitalSign.getHeartRate() <= 130;
+            isSystolicBloodPressureNormal = vitalSign.getSystolicBloodPressure() >= 80 && vitalSign.getSystolicBloodPressure() <= 110;
+            isWeightNormal = vitalSign.getWeight() >= 22 && vitalSign.getWeight() <= 31;
+        } 
+        //preschooler
+        else if (vitalSignHistory.getAge() >= 4 && vitalSignHistory.getAge() <= 5) {
+            isRespiratoryRateNormal = vitalSign.getRespiratoryRate() >= 20 && vitalSign.getRespiratoryRate() <= 30;
+            isHeartRateNormal = vitalSign.getHeartRate() >= 80 && vitalSign.getHeartRate() <= 120;
+            isSystolicBloodPressureNormal = vitalSign.getSystolicBloodPressure() >= 80 && vitalSign.getSystolicBloodPressure() <= 110;
+            isWeightNormal = vitalSign.getWeight() >= 31 && vitalSign.getWeight() <= 40;
+        }
+        //school age
+        else if (vitalSignHistory.getAge() >= 6 && vitalSignHistory.getAge() <= 12) {
+            isRespiratoryRateNormal = vitalSign.getRespiratoryRate() >= 20 && vitalSign.getRespiratoryRate() <= 30;
+            isHeartRateNormal = vitalSign.getHeartRate() >= 70 && vitalSign.getHeartRate() <= 110;
+            isSystolicBloodPressureNormal = vitalSign.getSystolicBloodPressure() >= 80 && vitalSign.getSystolicBloodPressure() <= 120;
+            isWeightNormal = vitalSign.getWeight() >= 41 && vitalSign.getWeight() <= 92;
+        }
+        //adolescent
+        else if (vitalSignHistory.getAge() >= 13) {
+            isRespiratoryRateNormal = vitalSign.getRespiratoryRate() >= 12 && vitalSign.getRespiratoryRate() <= 20;
+            isHeartRateNormal = vitalSign.getHeartRate() >= 55 && vitalSign.getHeartRate() <= 105;
+            isSystolicBloodPressureNormal = vitalSign.getSystolicBloodPressure() >= 110 && vitalSign.getSystolicBloodPressure() <= 120;
+            isWeightNormal = vitalSign.getWeight() >= 110;
+        }
+        
+    }
+    
     private void deleteVitalSignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteVitalSignJButtonActionPerformed
         // TODO add your handling code here:
         int selectedRow = vitalSignJTable.getSelectedRow();
@@ -232,7 +323,12 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deleteVitalSignJButton;
+    private javax.swing.JLabel heartRateJLabel;
     private javax.swing.JTextField heartRateJTextField;
+    private javax.swing.JLabel isHeartRateNormalJLabel;
+    private javax.swing.JLabel isRespiratoryRateNormalJLabel;
+    private javax.swing.JLabel isSystolicBloodPressureNormalJLabel;
+    private javax.swing.JLabel isWeightNormalJLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -240,11 +336,14 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel respiratoryRateJLabel;
     private javax.swing.JTextField respiratoryRateJTextField;
+    private javax.swing.JLabel systolicBloodPressureJLabel;
     private javax.swing.JTextField systolicBloodPressureJTextField;
     private javax.swing.JTextField timeAndDateJTextField;
     private javax.swing.JButton viewVitalSignJButton;
     private javax.swing.JTable vitalSignJTable;
+    private javax.swing.JLabel weightJLabel;
     private javax.swing.JTextField weightJTextField;
     // End of variables declaration//GEN-END:variables
 }

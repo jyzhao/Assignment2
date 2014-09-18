@@ -15,8 +15,8 @@ public class VitalSign {
     private float systolicBloodPressure;
     private float weight;
     private String timeAndDate;
-
-
+ 
+    
     public float getRespiratoryRate() {
         return respiratoryRate;
     }
@@ -65,4 +65,6 @@ public class VitalSign {
     public String toString() {
         return getTimeAndDate();
     }
+
+
 }

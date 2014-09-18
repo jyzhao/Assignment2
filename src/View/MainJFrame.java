@@ -33,25 +33,33 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
-        createVitalSignJButton = new javax.swing.JButton();
         viewVitalSignJButton = new javax.swing.JButton();
+        createPatientJButton = new javax.swing.JButton();
+        createVitalSignJButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jSplitPane1.setDividerLocation(160);
 
-        createVitalSignJButton.setText("Create Vital Sign");
-        createVitalSignJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createVitalSignJButtonActionPerformed(evt);
-            }
-        });
-
         viewVitalSignJButton.setText("View Vital Sign");
         viewVitalSignJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewVitalSignJButtonActionPerformed(evt);
+            }
+        });
+
+        createPatientJButton.setText("Create Patient");
+        createPatientJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createPatientJButtonActionPerformed(evt);
+            }
+        });
+
+        createVitalSignJButton.setText("Create Vital Sign");
+        createVitalSignJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createVitalSignJButtonActionPerformed(evt);
             }
         });
 
@@ -61,19 +69,25 @@ public class MainJFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(createVitalSignJButton)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(createVitalSignJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(createPatientJButton)
                     .addComponent(viewVitalSignJButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 16, Short.MAX_VALUE))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {createPatientJButton, createVitalSignJButton, viewVitalSignJButton});
+
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(createVitalSignJButton)
-                .addGap(140, 140, 140)
-                .addComponent(viewVitalSignJButton)
-                .addContainerGap(286, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(createPatientJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85)
+                .addComponent(createVitalSignJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addComponent(viewVitalSignJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -82,7 +96,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 609, Short.MAX_VALUE)
+            .addGap(0, 724, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,7 +111,7 @@ public class MainJFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSplitPane1))
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 895, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,17 +124,23 @@ public class MainJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void createVitalSignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createVitalSignJButtonActionPerformed
-        // TODO add your handling code here:
-        CreateVitalSignJPanel createJPanel = new CreateVitalSignJPanel(this.vitalSignHistory);
-        jSplitPane1.setRightComponent(createJPanel);
-    }//GEN-LAST:event_createVitalSignJButtonActionPerformed
-
     private void viewVitalSignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewVitalSignJButtonActionPerformed
         // TODO add your handling code here:
         ViewVitalSignJPanel viewJPanel = new ViewVitalSignJPanel(this.vitalSignHistory);
         jSplitPane1.setRightComponent(viewJPanel);
     }//GEN-LAST:event_viewVitalSignJButtonActionPerformed
+
+    private void createPatientJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPatientJButtonActionPerformed
+        // TODO add your handling code here:
+        CreatePatientJPanel createPatientJPanel = new CreatePatientJPanel(this.vitalSignHistory);
+        jSplitPane1.setRightComponent(createPatientJPanel);
+    }//GEN-LAST:event_createPatientJButtonActionPerformed
+
+    private void createVitalSignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createVitalSignJButtonActionPerformed
+        // TODO add your handling code here:
+        CreateVitalSignJPanel createJPanel = new CreateVitalSignJPanel(this.vitalSignHistory);
+        jSplitPane1.setRightComponent(createJPanel);
+    }//GEN-LAST:event_createVitalSignJButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,6 +178,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton createPatientJButton;
     private javax.swing.JButton createVitalSignJButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
