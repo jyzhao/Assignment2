@@ -209,8 +209,9 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
             systolicBloodPressureJTextField.setText(String.valueOf(vitalSign.getSystolicBloodPressure()));
             weightJTextField.setText(String.valueOf(vitalSign.getWeight()));
             timeAndDateJTextField.setText(String.valueOf(vitalSign.getTimeAndDate()));
+
         } else {
-            JOptionPane.showMessageDialog(null, "Please selecte vital sign !!!");
+            JOptionPane.showMessageDialog(null, "Please select vital sign !!!");
         }
         
 

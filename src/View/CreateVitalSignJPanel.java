@@ -7,6 +7,7 @@ package View;
 
 import Model.VitalSign;
 import Model.VitalSignHistory;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -130,19 +131,27 @@ public class CreateVitalSignJPanel extends javax.swing.JPanel {
 
     private void createVitalSignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createVitalSignJButtonActionPerformed
         // TODO add your handling code here:
-        float respiratoryRate = Float.parseFloat(respiratoryRateJTextField.getText());
-        float heartRate = Float.parseFloat(heartRateJTextField.getText());
-        float systolicBloodPressure = Float.parseFloat(systolicBloodPressureJTextField.getText());
-        float weight = Float.parseFloat(weightJTextField.getText());
-        String timeAndDate = timeAndDateJTextField.getText();
-        
-        VitalSign vitalSign = this.vitalSignHistory.addVitalSign();
+        try {
+            float respiratoryRate = Float.parseFloat(respiratoryRateJTextField.getText());
+            float heartRate = Float.parseFloat(heartRateJTextField.getText());
+            float systolicBloodPressure = Float.parseFloat(systolicBloodPressureJTextField.getText());
+            float weight = Float.parseFloat(weightJTextField.getText());
+            String timeAndDate = timeAndDateJTextField.getText();
+            
+            VitalSign vitalSign = this.vitalSignHistory.addVitalSign();
 
-        vitalSign.setRespiratoryRate(respiratoryRate);
-        vitalSign.setHeartRate(heartRate);
-        vitalSign.setSystolicBloodPressure(systolicBloodPressure);
-        vitalSign.setWeight(weight);
-        vitalSign.setTimeAndDate(timeAndDate);
+            vitalSign.setRespiratoryRate(respiratoryRate);
+            vitalSign.setHeartRate(heartRate);
+            vitalSign.setSystolicBloodPressure(systolicBloodPressure);
+            vitalSign.setWeight(weight);
+            vitalSign.setTimeAndDate(timeAndDate);
+        
+        } catch (IllegalArgumentException e) {
+               JOptionPane.showMessageDialog(null, "Please enter a valid value !!!");
+        }
+        
+        
+
         
     }//GEN-LAST:event_createVitalSignJButtonActionPerformed
 
