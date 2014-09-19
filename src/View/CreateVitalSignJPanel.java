@@ -19,6 +19,7 @@ public class CreateVitalSignJPanel extends javax.swing.JPanel {
      * Creates new form CreateVitalSignJPanel
      */
     private VitalSignHistory vitalSignHistory;
+    private Boolean isVitalSignNormal;
     
     public CreateVitalSignJPanel(VitalSignHistory vitalSignHistory) {
         initComponents();
@@ -146,6 +147,36 @@ public class CreateVitalSignJPanel extends javax.swing.JPanel {
             vitalSign.setWeight(weight);
             vitalSign.setTimeAndDate(timeAndDate);
         
+            if (vitalSignHistory.getAge() >= 1 && vitalSignHistory.getAge() <= 3) { //toddler
+                isVitalSignNormal = (vitalSign.getRespiratoryRate() >= 20 && vitalSign.getRespiratoryRate() <= 30) &&
+                                    (vitalSign.getHeartRate() >= 80 && vitalSign.getHeartRate() <= 130) &&
+                                    (vitalSign.getSystolicBloodPressure() >= 80 && vitalSign.getSystolicBloodPressure() <= 110) &&
+                                    (vitalSign.getWeight() >= 22 && vitalSign.getWeight() <= 31);
+                
+            } else if (vitalSignHistory.getAge() >= 4 && vitalSignHistory.getAge() <= 5) {  //preschooler
+                isVitalSignNormal = (vitalSign.getRespiratoryRate() >= 20 && vitalSign.getRespiratoryRate() <= 30) &&
+                                    (vitalSign.getHeartRate() >= 80 && vitalSign.getHeartRate() <= 120) &&
+                                    (vitalSign.getSystolicBloodPressure() >= 80 && vitalSign.getSystolicBloodPressure() <= 110) &&
+                                    (vitalSign.getWeight() >= 31 && vitalSign.getWeight() <= 40);
+                
+            } else if (vitalSignHistory.getAge() >= 6 && vitalSignHistory.getAge() <= 12) {  //school age
+                isVitalSignNormal = (vitalSign.getRespiratoryRate() >= 20 && vitalSign.getRespiratoryRate() <= 30) &&
+                                    (vitalSign.getHeartRate() >= 70 && vitalSign.getHeartRate() <= 110) &&
+                                    (vitalSign.getSystolicBloodPressure() >= 80 && vitalSign.getSystolicBloodPressure() <= 120) &&
+                                    (vitalSign.getWeight() >= 41 && vitalSign.getWeight() <= 92);
+                
+            } else if (vitalSignHistory.getAge() >= 13) {  //adolescent
+                isVitalSignNormal = (vitalSign.getRespiratoryRate() >= 12 && vitalSign.getRespiratoryRate() <= 20) &&
+                                    (vitalSign.getHeartRate() >= 55 && vitalSign.getHeartRate() <= 105) &&
+                                    (vitalSign.getSystolicBloodPressure() >= 110 && vitalSign.getSystolicBloodPressure() <= 120) &&
+                                    (vitalSign.getWeight() >= 110);
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Please enter a valid age !!!");
+            }
+            
+            vitalSign.setIsVitalSignNormal(isVitalSignNormal);
+            
         } catch (IllegalArgumentException e) {
                JOptionPane.showMessageDialog(null, "Please enter a valid value !!!");
         }

@@ -15,7 +15,7 @@ public class VitalSign {
     private float systolicBloodPressure;
     private float weight;
     private String timeAndDate;
- 
+    private Boolean isVitalSignNormal;
     
     public float getRespiratoryRate() {
         return respiratoryRate;
@@ -57,7 +57,13 @@ public class VitalSign {
         this.timeAndDate = timeAndDate;
     }
     
-    
+    public Boolean getIsVitalSignNormal() {
+        return isVitalSignNormal;
+    }
+
+    public void setIsVitalSignNormal(Boolean isVitalSignNormal) {
+        this.isVitalSignNormal = isVitalSignNormal;
+    }
     
     
     
@@ -65,6 +71,7 @@ public class VitalSign {
     public String toString() {
         return getTimeAndDate();
     }
+
 
 
 }
